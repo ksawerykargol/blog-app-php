@@ -1,5 +1,6 @@
 <?php
 mysqli_report(MYSQLI_REPORT_STRICT);
+require 'app-config.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,11 +19,7 @@ mysqli_report(MYSQLI_REPORT_STRICT);
 		<div class="main-content-header">
 			<h1>Lista najnowszych artykułów</h1>
 			<?php
-			$dbServer = 'localhost';
-			$dbUser = 'webapp';
-			$dbPassword = 'ksawery1';
-			$dbName = 'blog';
-
+			
 			try {
 				$connection = new mysqli($dbServer, $dbUser, $dbPassword, $dbName);
 				$connection->set_charset('utf8');
