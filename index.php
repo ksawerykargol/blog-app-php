@@ -1,13 +1,5 @@
 <?php
-$dbServer = 'localhost';
-$dbUser = 'root';
-$dbPassword = '';
-$dbName = 'blog';
-
-if($connection = new mysqli($dbServer, $dbUser, $dbPassword, $dbName)){
-	$connection->set_charset('utf8');
-	$sql = "SELECT title, content FROM posts";	
-}
+mysqli_report(MYSQLI_REPORT_STRICT);
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +18,18 @@ if($connection = new mysqli($dbServer, $dbUser, $dbPassword, $dbName)){
 		<div class="main-content-header">
 			<h1>Lista najnowszych artykułów</h1>
 			<?php
-			if ($result = $connection->query($sql))
-			{
+			$dbServer = 'localhost';
+			$dbUser = 'root';
+			$dbPassword = '';
+			$dbName = 'blog';
+
+			try {
+				$connection = new mysqli($dbServer, $dbUser, $dbPassword, $dbName);
+				$connection->set_charset('utf8');
+				$sql = "SELECT title, content FROM posts";
+
+				$result = $connection->query($sql);
+
 				while($row = $result->fetch_assoc())
 				{
 					echo '<article>';
@@ -35,13 +37,11 @@ if($connection = new mysqli($dbServer, $dbUser, $dbPassword, $dbName)){
 					echo '<p>' . $row['content'] . '</p>';
 					echo '</article>';
 				}
-			}
-			else
-			{
-				echo "Błąd " . $connection->error;
+				$connection->close();
+			} catch (Exception $e) {
+				echo 'Usluga bazy danych niedostepna';
 			}
 
-			$connection->close();
 
 			?>
 		</div>
