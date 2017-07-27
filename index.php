@@ -4,9 +4,10 @@ $dbUser = 'root';
 $dbPassword = '';
 $dbName = 'blog';
 
-$connection = new mysqli($dbServer, $dbUser, $dbPassword, $dbName);
-$connection->set_charset('utf8');
-$sql = "SELECT title, content FROM posts";
+if($connection = new mysqli($dbServer, $dbUser, $dbPassword, $dbName)){
+	$connection->set_charset('utf8');
+	$sql = "SELECT title, content FROM posts";	
+}
 ?>
 
 <!DOCTYPE html>
