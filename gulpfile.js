@@ -6,3 +6,8 @@ gulp.task('buildcss', function(){
 	.pipe(cleanCSS())
 	.pipe(gulp.dest('assets-prod/styles'));
 });
+
+gulp.task('copyimages', function(){
+	gulp.src('assets-dev/images/*.png')
+	.pipe(gulp.dest('assets-prod/images'));
+});
