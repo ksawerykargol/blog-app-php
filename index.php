@@ -19,8 +19,8 @@ mysqli_report(MYSQLI_REPORT_STRICT);
 			<h1>Lista najnowszych artykułów</h1>
 			<?php
 			$dbServer = 'localhost';
-			$dbUser = 'root';
-			$dbPassword = '';
+			$dbUser = 'webapp';
+			$dbPassword = 'ksawery1';
 			$dbName = 'blog';
 
 			try {
@@ -40,6 +40,7 @@ mysqli_report(MYSQLI_REPORT_STRICT);
 				$connection->close();
 			} catch (Exception $e) {
 				echo 'Usluga bazy danych niedostepna';
+				echo $e->getMessage();
 			}
 
 
