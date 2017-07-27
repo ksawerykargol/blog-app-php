@@ -7,7 +7,6 @@ $dbName = 'blog';
 $connection = new mysqli($dbServer, $dbUser, $dbPassword, $dbName);
 $connection->set_charset('utf8');
 $sql = "SELECT title, content FROM posts";
-
 ?>
 
 <!DOCTYPE html>
@@ -15,11 +14,11 @@ $sql = "SELECT title, content FROM posts";
 <head>
 	<meta charset="UTF-8">
 	<title>Blog</title>
-	<link rel="stylesheet" href="assets/styles/main.css">
+	<link rel="stylesheet" href="assets-prod/styles/main.css">
 </head>
 <body>
 	<header class="top-header">
-		<img src="assets/images/logo.png" alt="Logo strony" class="top-header-image">
+		<img src="assets-prod/images/logo.png" alt="Logo strony" class="top-header-image">
 	</header>
 
 	<div class="main-content container">
